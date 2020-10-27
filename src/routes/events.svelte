@@ -14,16 +14,11 @@
 </script>
 
 <style>
-  main {
-  }
-
+ 
   .title {
     text-align: center;
     font-size: 24px;
     margin-bottom: 30px;
-  }
-
-  button {
   }
 
   section {
