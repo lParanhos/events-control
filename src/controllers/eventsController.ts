@@ -16,5 +16,23 @@ export const getAllEvents = async (req, res, next) => {
 }
 
 export const createAnEvent = async (req, res, next) => {
+    try {
+        const { name, email, city, houseNumber, phoneNumber,maritalStatus, neighborhood, state,street,zipCode, ...eventData } = req.body;
+            await sequelize.sync();
+             const user = await UserModel.create({
+                name, email, city, houseNumber, phoneNumber,maritalStatus, neighborhood, state,street,zipCode
+            })
+            
+            const { id }: any = user.toJSON() 
 
+            const event = await EventModel.create({
+                ...eventData,
+                userId: id
+            }) 
+        const message = JSON.stringify({success: 200, event: event.toJSON()})
+        res.end(message)
+     } catch (error) {
+        console.log('Problem :(', error)
+        res.end({ success: false, message: 'Oooops, fail :('})
+    }
 }

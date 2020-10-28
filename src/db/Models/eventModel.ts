@@ -15,18 +15,19 @@ export const EventModel = sequelize.define('Event', {
     observations: {
         type: DataTypes.STRING,
     },
-    user: {
+    userId: {
         type: DataTypes.UUID,
+        primaryKey: true
     },
     type: {
-        type: DataTypes.ENUM('weeding', 'birthday'),
+        type: DataTypes.STRING,
         allowNull: false
     },
     groomsName : {
         type: DataTypes.STRING,
     },
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false
     },
     ceremonyLocation: {
@@ -46,4 +47,5 @@ export const EventModel = sequelize.define('Event', {
     }
 })
 
-EventModel.hasMany(UserModel)
+UserModel.hasOne(EventModel, {foreignKey: 'userId'})
+EventModel.belongsTo(UserModel)
