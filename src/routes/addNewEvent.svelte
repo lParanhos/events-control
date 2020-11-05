@@ -7,6 +7,9 @@
   let address = {};
   let eventType = "";
   let fetchingAddress = true;
+  let form;
+
+  $: console.log(form);
 
   const civilStateOptions = [
     "Solteiro(a)",
@@ -37,16 +40,63 @@
 
     eventType = ev.target.id;
   };
+
+  const handleSubmit = async (ev) => {
+    console.log(ev.target);
+    const fake = {
+      description: "Simple test",
+      observations: "Nothing obs",
+      groomsName: "Marilda",
+      date: "2020-11-01",
+      eventLocation: "Rua BillieJean",
+      eventStart: "12:00",
+      eventEnd: "13:00",
+      type: "birthday",
+      name: "Clebinho",
+      email: "cleb@assrrrr.com",
+      phoneNumber: 122222222222,
+      maritalStatus: "stringasdasd",
+      street: "stringasdasda",
+      houseNumber: 1212,
+      neighborhood: "stringasdasd",
+      city: "stringasdasda",
+      state: "stringasdasdasdasd",
+      zipCode: 999990999,
+    };
+
+    const response = await fetch("/blog.json", {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(fake),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+
+      console.log("result", result);
+    }
+  };
 </script>
 
 <style>
+  form {
+    padding-bottom: 30px;
+  }
   .title {
     font-size: 24px;
     margin-bottom: 20px;
   }
+
+  button {
+    float: right;
+  }
 </style>
 
-<form>
+<form on:submit|preventDefault={handleSubmit}>
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <h1 class="title">Dados do Contratante</h1>
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -192,4 +242,9 @@
       </div>
     {/if}
   </div>
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Salvar evento
+  </button>
 </form>
