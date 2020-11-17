@@ -1,4 +1,4 @@
-export interface EventModel {
+export interface Event {
     id: string,
     description: string,
     observations?: string,

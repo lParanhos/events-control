@@ -1,23 +1,6 @@
-import posts from './_posts.js';
-import { EventModel } from "../../db/Models/eventModel"
-import { UserModel } from "../../db/Models/userModel"
-import { sequelize } from "../../db/sqliteDb"
-
-
-const contents = JSON.stringify(posts.map(post => {
-	return {
-		title: post.title,
-		slug: post.slug
-	};
-}));
-
-export function get(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
-
-	res.end(contents);
-}
+import { EventModel } from "../../db/Models/eventModel";
+import { UserModel } from "../../db/Models/userModel";
+import { sequelize } from "../../db/sqliteDb";
 
 export async function post(req, res) {
 
