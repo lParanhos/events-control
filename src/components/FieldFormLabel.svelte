@@ -1,6 +1,6 @@
-<script>
-  export let md;
-  export let label;
+<script lang="ts">
+  export let md = "";
+  export let label = "" ;
 </script>
 
 <div class={`w-full md:w-${md} px-3 mb-6 md:mb-0`}>

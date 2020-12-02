@@ -15,7 +15,7 @@
 	}
 </style>
 
-<Header {segment}/>
+<Header />
 
 <main>
 	<slot></slot>

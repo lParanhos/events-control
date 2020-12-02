@@ -15,10 +15,6 @@ export const EventModel = sequelize.define('Event', {
     observations: {
         type: DataTypes.STRING,
     },
-    userId: {
-        type: DataTypes.UUID,
-        primaryKey: true
-    },
     type: {
         type: DataTypes.STRING,
         allowNull: false
@@ -40,12 +36,12 @@ export const EventModel = sequelize.define('Event', {
         type: DataTypes.STRING,
     },
     eventStart: {
-        type: DataTypes.TIME
+        type: DataTypes.STRING
     },
     eventEnd: {
-        type: DataTypes.TIME
+        type: DataTypes.STRING
     }
 })
 
 UserModel.hasOne(EventModel, {foreignKey: 'userId'})
-EventModel.belongsTo(UserModel)
+EventModel.belongsTo(UserModel) 

@@ -1,8 +1,13 @@
 <script>
-  export let md;
-  export let label;
+  import { getEventsAction } from "../utils/utils";
+  import { current_component } from "svelte/internal";
+
+  const events = getEventsAction(current_component);
+  export let md = "";
+  export let label = "";
   export let options = [];
-  export let id; 
+  export let id = "";
+  export let value = "";
 </script>
 
 <div class={`w-full md:w-${md} px-3`}>
@@ -14,9 +19,11 @@
   <div class="relative">
     <select
       class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-      id={id}>
+      id={id}
+      bind:value
+      use:events>
       {#each options as item}
-        <option>{item}</option>
+        <option value={item} >{item}</option>
       {/each}
     </select>
     <div

@@ -16,11 +16,14 @@ export const getAllEvents = async (req, res, next) => {
 }
 
 export const createAnEvent = async (req, res, next) => {
+    console.log("===>", req.body)
     try {
         await sequelize.sync();
-        const { name, email, city, houseNumber, phoneNumber,maritalStatus, neighborhood, state,street,zipCode, ...eventData } = req.body;
+        const { name, city, houseNumber, phoneNumber,maritalStatus, neighborhood, state, street, zipCode, ...eventData } = req.body;
+        
+        
         const user = await UserModel.create({
-              name, email, city, houseNumber, phoneNumber,maritalStatus, neighborhood, state,street,zipCode
+              name, city, houseNumber, phoneNumber,maritalStatus, neighborhood, state,street,zipCode
         });
            
         const { id }: any = user.toJSON(); 

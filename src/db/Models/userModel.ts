@@ -11,41 +11,29 @@ export const UserModel = sequelize.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-     email: {
-         type: DataTypes.STRING,
-         allowNull: false,
-         unique: true
-     },
      phoneNumber: {
          type: DataTypes.NUMBER,
-         allowNull: false
      },
      maritalStatus: {
          type: DataTypes.STRING
      },
      street: {
          type: DataTypes.STRING,
-         allowNull: false
      },
      houseNumber: {
          type: DataTypes.NUMBER,
-         allowNull: false
      },
      neighborhood: {
          type: DataTypes.STRING,
-         allowNull: false
      },
      city: {
          type: DataTypes.STRING,
-         allowNull: false
      },
      state: {
          type: DataTypes.STRING,
-         allowNull: false
      },
      zipCode: {
          type: DataTypes.NUMBER,
-         allowNull: false
      }
     
 })

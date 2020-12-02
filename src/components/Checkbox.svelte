@@ -1,9 +1,9 @@
 <script>
   import { getEventsAction } from "../utils/utils";
   import { current_component } from "svelte/internal";
-  export let title;
-  export let checked;
-  export let id;
+  export let title = "";
+  export let checked = false;
+  export let id = "";
 
   const events = getEventsAction(current_component);
 </script>
