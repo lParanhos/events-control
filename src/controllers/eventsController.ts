@@ -6,7 +6,7 @@ import { sequelize } from '../db/sqliteDb'
 export const getAllEvents = async (req, res, next) => {
     try {
         await sequelize.sync();
-        const events = await EventModel.findAll({ include: UserModel })
+        const events = await EventModel.findAll({ include: [{model: UserModel, }],  })
         const parsedEventList = JSON.stringify(events)
         res.end(parsedEventList)
     } catch (error) {

@@ -44,4 +44,4 @@ export const EventModel = sequelize.define('Event', {
 })
 
 UserModel.hasOne(EventModel, {foreignKey: 'userId'})
-EventModel.belongsTo(UserModel) 
+EventModel.belongsTo(UserModel, {foreignKey: 'userId'}) 
